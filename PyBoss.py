@@ -68,3 +68,47 @@ emp_ssns = []
 emp_states = []
 
 # Read the csv and convert it into a list of dictionaries
+with open(fite_to_load) as emp_data:
+    reader = csv.reader(emp_data)
+
+    header = next(reader)
+
+    # Loop through each row, re-grab each field and store in a new list
+    for row in reader:
+
+        # Grab emp_ids and store it into a list
+        emp_ids = emp_ids + [row[0]]
+
+        # Grab names, split them, and store them in a temporary variable
+        split_name = row[1].split(" ")
+
+        #Then save first and last name in separate lists
+        emp_first_names = emp_first_names + [split_name[0]]
+        emp_last_names = emp_last_names + [split_name[1]]
+        
+        # Grab DOB and reformat it
+        dob = row[2].split("-")
+        year = dob[0]
+        month = dob[1]
+        day = dob[2]
+        reformatted_dob = f"{month}/{day}/{year}"
+
+        # Then store it into a list
+        emp_dobs.append(reformatted_dob)
+
+        # Grab SSN and reformat it
+        split_ssn = list(row[3])
+        split_ssn[0:3] = ("*", "*", "*")
+        aplit_ssn[4:6] = ("*", "*")
+        joined_ssn = "".join(split_ssn)
+
+        # Then store it into a list
+        emp_ssns.append(joined_ssn)
+
+        # Grab the states and use the dictionary to find the replacement
+        state_abbrev = us_state_abbrev[row[4]]
+
+        # Then store the abbreviation into a list
+        emp_states.append(state_abbrev)
+
+#Zip all of the new lists together
