@@ -2,8 +2,8 @@ import csv
 import os
 
 # Files to Load and output
-file_to_load = os.path.join("raw_data", "election_data_1.csv")
-file_to_output = os.path.join("analysis", "election_analysis_1.csv")
+file_to_load = os.path.join("raw_data", "election_data_2.csv")
+file_to_output = os.path.join("analysis", "election_analysis_2.csv")
 
 # Total Vote Counter
 total_votes = 0
