@@ -35,4 +35,21 @@ with open(file_to_load) as election_data:
         # Extract the candidate name from each row
         candidate_name = row[2]
 
+        # If the candidate does not match any existing candidate
+        # (in a way, our loop is "discovering" candidates as it goes)
+        if candidate_name not in candidate_options:
+
+            # Add it to the list of candidates in the running
+            candidate_options.append(candidate_name)
+
+            # And begin tracking that candidate's voter count
+            candidate_votes[candidate_name] = 0
         
+        # Then add a vote to the candidate's count
+        candidate_votes[candidate_name] = candidate_votes[candidate_name] + 1
+
+# Print the results and export the data to our text file
+with open(file_to_output, "w") as txt_file:
+
+    # Print the final vote count (to terminal)
+    
