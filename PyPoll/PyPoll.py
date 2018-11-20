@@ -67,7 +67,7 @@ with open(file_to_output, "w") as txt_file:
 
         # Retrieve vote count and percentage
         votes = candidate_votes.get(candidate)
-        vote_percentage = float(votes) / float(total/votes) * 100
+        vote_percentage = float(votes) / float(total_votes) * 100
 
         # Determine winning vote count and candidate
         if (votes > winning_count):
